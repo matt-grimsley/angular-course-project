@@ -1,10 +1,11 @@
-import { EventEmitter, Injectable } from "@angular/core";
-import { Ingredient } from "../shared/ingredient.model";
-import { ShoppingListService } from "../shopping-list/shopping-list.service";
-import { Recipe } from "./recipe.model";
+import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
+import { Ingredient } from '../shared/ingredient.model';
+import { ShoppingListService } from '../shopping-list/shopping-list.service';
+import { Recipe } from './recipe.model';
 
 @Injectable()
-export class RecipeService{
+export class RecipeService {
   private recipes: Recipe[] = [
     new Recipe(
       'Lasagna',
@@ -14,7 +15,7 @@ export class RecipeService{
         new Ingredient('Beef', 1),
         new Ingredient('Noodles', 5),
         new Ingredient('Tomatoes', 3),
-        new Ingredient('Cheese', 4)
+        new Ingredient('Cheese', 4),
       ]
     ),
     new Recipe(
@@ -25,17 +26,15 @@ export class RecipeService{
         new Ingredient('Flour', 3),
         new Ingredient('Sugar', 2),
         new Ingredient('Butter', 1),
-        new Ingredient('Eggs', 4)
+        new Ingredient('Eggs', 4),
       ]
     ),
   ];
 
-  recipeSelected = new EventEmitter<Recipe>();
+  recipeSelected = new Subject<Recipe>();
 
-  constructor(private shoppingListService: ShoppingListService){
-
-  }
-  getRecipe(index: number){
+  constructor(private shoppingListService: ShoppingListService) {}
+  getRecipe(index: number) {
     return this.recipes[index];
   }
 
@@ -43,7 +42,7 @@ export class RecipeService{
     return this.recipes.slice();
   }
 
-  addIngredientsToShoppingList(ingredients: Ingredient[]){
+  addIngredientsToShoppingList(ingredients: Ingredient[]) {
     this.shoppingListService.addIngredients(ingredients);
   }
 }
