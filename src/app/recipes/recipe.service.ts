@@ -32,10 +32,17 @@ export class RecipeService {
       ]
     ),
   ];
+  //private recipes: Recipe[] = [];
 
   recipeSelected = new Subject<Recipe>();
 
   constructor(private shoppingListService: ShoppingListService) {}
+
+  setRecipes(recipes: Recipe[]){
+    debugger
+    this.recipes = recipes;
+    this.recipesChanged.next(this.recipes.slice());
+  }
   getRecipe(index: number) {
     return this.recipes[index];
   }
