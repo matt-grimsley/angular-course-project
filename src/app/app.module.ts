@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header.component';
+import { HeaderComponent } from './header/header.component';
 import { RecipesComponent } from './recipes/recipes.component';
 import { RecipeListComponent } from './recipes/recipe-list/recipe-list.component';
 import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
@@ -23,36 +23,31 @@ import { AuthInterceptorService } from './auth/auth-interceptor.service';
 import { AlertComponent } from './shared/alert/alert.component';
 import { PlaceholderDirective } from './shared/placeholder/placeholder.directive';
 
-
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    RecipesComponent,
-    RecipeListComponent,
-    RecipeDetailComponent,
-    RecipeItemComponent,
-    ShoppingListComponent,
-    ShoppingEditComponent,
-    DropdownDirective,
-    RecipeStartComponent,
-    RecipeEditComponent,
-    AuthComponent,
-    LoadingSpinnerComponent,
-    AlertComponent,
-    PlaceholderDirective
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    AppRoutingModule,
-  ],
-  providers: [ShoppingListService, RecipeService, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}],
-  bootstrap: [AppComponent],
-  entryComponents: [
-    AlertComponent
-  ]
+    declarations: [
+        AppComponent,
+        HeaderComponent,
+        RecipesComponent,
+        RecipeListComponent,
+        RecipeDetailComponent,
+        RecipeItemComponent,
+        ShoppingListComponent,
+        ShoppingEditComponent,
+        DropdownDirective,
+        RecipeStartComponent,
+        RecipeEditComponent,
+        AuthComponent,
+        LoadingSpinnerComponent,
+        AlertComponent,
+        PlaceholderDirective
+    ],
+    imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule, AppRoutingModule],
+    providers: [
+        ShoppingListService,
+        RecipeService,
+        { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true }
+    ],
+    bootstrap: [AppComponent],
+    entryComponents: [AlertComponent]
 })
 export class AppModule {}
