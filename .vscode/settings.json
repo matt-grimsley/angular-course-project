@@ -3,5 +3,6 @@
     "prettier.printWidth": 100,
     "prettier.singleQuote": true,
     "prettier.tabWidth": 4,
-    "prettier.trailingComma": "none"
+    "prettier.trailingComma": "none",
+    "prettier.configPath": ".prettierrc.json"
 }
